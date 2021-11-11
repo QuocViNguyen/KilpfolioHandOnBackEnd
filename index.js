@@ -10,7 +10,7 @@ const cors =  require('cors');
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true }).then((result)=>{
     console.log("DB connected");
 }).catch((error)=>{
-    console.log("error: " + error)
+    console.log("error: " + error);
 })
 
 app.use(cors());
@@ -31,13 +31,13 @@ app.get("/add-data", async (req, res)=>{
         res.send("new data added");
     })
     .catch((error) => {
-
+        res.send(error);
     });
 })
 
 app.get("/getDataSources", async (req, res) =>{
     var serviceName = req.query.serviceName;
-    console.log(serviceName)
+    console.log(serviceName);
     DataSource.find({'service':serviceName}).then((result)=>{
         console.log(result);
         res.send(result);
